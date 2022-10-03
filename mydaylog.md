@@ -17,7 +17,7 @@
     要找到pywin32_system32，注意不是包位置，设置到环境变量  
     重启pycharm 仍然报错 但可用  
     安装pywin32 pip3 install -i https://pypi.doubanio.com/simple pywin32 
- >3. pyhook3也需要环境变量  
+>3. pyhook3也需要环境变量  
     一、下载swig并解压官方链接： http://www.swig.org/download.html  
     二、复制swig文件夹的根目录添路径，添加到环境变量。
        右击“此电脑”——属性——系统高级设置——环境变量——选择“path”，点击“编辑”——新建——粘贴路径。  
@@ -31,6 +31,7 @@
     四、重新cmd——pip install pyHook3安装就不会报错。   
     五、python3版本如果已经使用pyhook模块，把import pyHook改为 import PyHook3 as pyHook就能正常运行了
     pip3 install -i https://pypi.doubanio.com/simple PyHook3
-
+>4.安装pyautogui  
+   pip3 install -i https://pypi.doubanio.com/simple pyautogui
 
 
