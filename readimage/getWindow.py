@@ -45,7 +45,7 @@ def winShot(hwnd, pathname):
     bmp.CreateCompatibleBitmap(srcdc, r[2] - r[0], r[3] - r[1])
     memdc.SelectObject(bmp)
     memdc.BitBlt((-r[0], top - r[1]), (r[2], r[3] - top), srcdc, (left, top), win32con.SRCCOPY)
-    bmp.SaveBitmapFile(memdc, bmpFileName)
+    # bmp.SaveBitmapFile(memdc, bmpFileName)
 
     im = Image.open(bmpFileName)
     im = im.convert('RGB')
