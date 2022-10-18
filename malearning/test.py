@@ -18,7 +18,7 @@ net.setInputScale(1.0/127.5)
 net.setInputMean((127.5, 127.5, 127.5))
 net.setInputSwapRB(True)
 
-hwnd = getw.getWindow('StandardFrame', '工作')
+hwnd = getw.getWindow('GxWindowClassD3d', '魔兽世界')
 jpgpath = None
 if hwnd:
     print('ok')
