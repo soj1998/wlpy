@@ -32,6 +32,12 @@
     五、python3版本如果已经使用pyhook模块，把import pyHook改为 import PyHook3 as pyHook就能正常运行了
     pip3 install -i https://pypi.doubanio.com/simple PyHook3
 >4.安装pyautogui  
-   pip3 install -i https://pypi.doubanio.com/simple pyautogui
-
-
+   pip3 install -i https://pypi.doubanio.com/simple pyautogui  
+>5.安装matplotlib  
+   pip3 install -i https://pypi.doubanio.com/simple matplotlib  
+>6.安装md转html的包  
+   pip3 install -i https://pypi.doubanio.com/simple markdown  
+   pip3 install -i https://pypi.doubanio.com/simple importlib  
+>7.安装pytorch  
+   pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio===0.8.2 --extra-index-url 
+   https://download.pytorch.org/whl/lts/1.8/cpu  

@@ -1,0 +1,12 @@
+##Interface:11200
+
+##Title: WowXMLExample
+
+##Title-zhCN: XML示例插件
+
+##Description: Exampleaddon for World of Warcraft Programming
+
+WowXMLExample.xml
+
+WowXMLExample.lua
+

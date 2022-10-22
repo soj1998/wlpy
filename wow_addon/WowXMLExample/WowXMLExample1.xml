@@ -1,0 +1,37 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="WowXMLExample.lua"/>
+	<Frame name="EnterLeaveTest" parent="UIParent" toplevel="true" frameStrata="HIGH" movable="false" enableMouse="false" hidden="false">
+
+        <Size x="100" y="100"  />
+
+        <Anchors>
+
+            <Anchor point="CENTER" relativePoint="CENTER" relativeTo="UIParent" />
+
+        </Anchors>
+
+        <Layers>
+
+            <Layer level="BACKGROUND">
+
+                <Texture name="$parentIcon" file="Interface\Icons\Spell_ShadowWordPain" setAllPoints="true"/>
+
+            </Layer>
+
+        </Layers>
+        <Scripts>
+
+            <OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT", -this:GetWidth());
+				GameTooltip:SetText(BSM_MOVING_HELP_TEXT);
+				GameTooltip:Show();
+			</OnEnter>
+
+        </Scripts>
+
+    </Frame>
+
+</Ui>
+
+
+
