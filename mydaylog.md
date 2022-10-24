@@ -1,4 +1,4 @@
-#### 每日记录
+### 每日记录
 
 ### 2022年9月29日
 
@@ -31,13 +31,17 @@
     四、重新cmd——pip install pyHook3安装就不会报错。   
     五、python3版本如果已经使用pyhook模块，把import pyHook改为 import PyHook3 as pyHook就能正常运行了
     pip3 install -i https://pypi.doubanio.com/simple PyHook3
->4.安装pyautogui  
+>4. 安装pyautogui  
    pip3 install -i https://pypi.doubanio.com/simple pyautogui  
->5.安装matplotlib  
+>5. 安装matplotlib  
    pip3 install -i https://pypi.doubanio.com/simple matplotlib  
->6.安装md转html的包  
+>6. 安装md转html的包  
    pip3 install -i https://pypi.doubanio.com/simple markdown  
    pip3 install -i https://pypi.doubanio.com/simple importlib  
->7.安装pytorch  
+>7. 安装pytorch  
    pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio===0.8.2 --extra-index-url 
    https://download.pytorch.org/whl/lts/1.8/cpu  
+>8. 出现错误The given NumPy array is not writeable, and PyTorch does not support non-writ  
+   /data/home/file_name/.conda/envs/cmr/lib/python3.7/site-packages/torch/utils/data/_utils/collate.py:63  
+  将 return default_collate([torch.as_tensor(b) for b in batch])
+  修改为 return default_collate([torch.as_tensor(b.copy()) for b in batch])
