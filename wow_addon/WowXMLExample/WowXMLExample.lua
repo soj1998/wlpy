@@ -38,14 +38,17 @@ mybutton:RegisterEvent("UNIT_COMBAT")
 local counter = 0 
 mybutton:SetScript("OnUpdate", function()
     counter = counter + 1
-    countmod = math.random(5)
-    if countmod == 1 then 
+    --countmod = math.random(5)
+    countmod = math.mod(counter, 5)
+    if countmod == 1 then
         x, y = GetPlayerMapPosition("player")
         z = GetCurrentMapZone()
         x1 = string.format("%.f", x*10000)
         y1 = string.format("%.f", y*10000)
-        xyid = z.."  |  "..x1.."  |  "..y1
+        f = GetPlayerFacing()
+        f1 = string.format("%.1f", f*10)
+        xyid = z.."  |  "..x1.."  |  "..y1.."  |  "..f1
         mybutton:SetText(xyid)
-    end    
+    end
 end)
 

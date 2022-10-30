@@ -45,3 +45,5 @@
    /data/home/file_name/.conda/envs/cmr/lib/python3.7/site-packages/torch/utils/data/_utils/collate.py:63  
   将 return default_collate([torch.as_tensor(b) for b in batch])
   修改为 return default_collate([torch.as_tensor(b.copy()) for b in batch])
+>9. pyqt5截图出现pil支持pyqt6   
+  pip3 install -i https://pypi.doubanio.com/simple PyQt6  
