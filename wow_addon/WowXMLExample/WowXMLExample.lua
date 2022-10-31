@@ -16,7 +16,7 @@ local backdropInfo = {
 
 mybutton = CreateFrame("Button","mybutton2",UIParent,"UIPanelButtonTemplate")
 mybutton:SetPoint("left",80,0)
-mybutton:SetWidth(200)
+mybutton:SetWidth(220)
 mybutton:SetHeight(22)
 x, y = GetPlayerMapPosition("player")
 x1 = string.format("%.2f", x*10000)
