@@ -12,7 +12,7 @@ img = screen.grabWindow(hwnd).toImage()
 image = ImageQt.fromqimage(img)
 w, h = image.size
 print(w, h)
-cut = (120, 440, 290, 460)
+cut = (150, 301, 325, 315)
 temp = image.crop(cut)
 temp.save('screenshot.jpg')
 sjpg = cv2.imread('screenshot.jpg')
