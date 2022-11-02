@@ -48,10 +48,10 @@ img = cv2.imread('screenshot1.jpg')
 #cv_show('img', img)
 # 灰度图
 ref = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#cv_show('ref', ref)
+cv_show('ref', ref)
 # 二值图像
-ref = cv2.threshold(ref, 10, 255, cv2.THRESH_BINARY_INV)[1]
-#cv_show('ref', ref)
+ref = cv2.threshold(ref, 100, 255, cv2.THRESH_BINARY_INV)[1]
+cv_show('ref', ref)
 
 # 计算轮廓
 #cv2.findContours()函数接受的参数为二值图，即黑白的（不是灰度图）,
