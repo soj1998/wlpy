@@ -53,3 +53,5 @@
 >11. 安装imutils  
   imutils是Adrian Rosebrock开发的一个python工具包，它整合了opencv、numpy和matplotlib的相关操作，主要是用来进行图形图像的处理，如图像的平移、旋转、缩放、骨架提取、显示等等，后期又加入了针对视频的处理，如摄像头、本地文件等。imutils同时支持python2和python3。  
   pip3 install -i https://pypi.doubanio.com/simple imutils    
+>12.  安装caffe  
+  pip3 install -i https://pypi.doubanio.com/simple caffe  
