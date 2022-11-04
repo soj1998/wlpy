@@ -37,19 +37,19 @@ if __name__=="__main__":
     print('*' * 10, '程序开始执行......', '*'*10)
     EPOCH = 50
     batch_size=32
-    train_images_path=r"data/train-images-idx3-ubyte"
-    train_labels_path=r"data/train-labels-idx1-ubyte"
+    train_images_path=r"data/train-images.idx3-ubyte"
+    train_labels_path=r"data/train-labels.idx1-ubyte"
     train_images=decode_idx3_ubyte(train_images_path)
     train_labels=decode_idx1_ubyte(train_labels_path)
     train_images=train_images.reshape(60000,1,28,28).astype(np.float32)/255-0.5/0.5
     train_labels=train_labels.reshape(60000).astype(np.int64)
     train_images=t.from_numpy(train_images)
     train_labels=t.from_numpy(train_labels).type(t.int64)
-    #print(train_images[0])
+    print(train_images[0])
 
     train_ds=TensorDataset(train_images,train_labels)
 
     # model = LeNet5().cuda()
-    model = LeNet5_01().to(device)
+    model = LeNet5().to(device)
     train_dl=DataLoader(dataset=train_ds,batch_size=batch_size,shuffle=True,drop_last=False)
     train(EPOCH, model,train_dl)

@@ -21,9 +21,9 @@ def test(model,test_dl,wt):
     print('total acc:%.2f\n'%(correct_count/total))
 
 if __name__=="__main__":
-    model = LeNet5_01().to(device) # .cuda()
-    test_images_path = r"data/t10k-images-idx3-ubyte"
-    test_labels_path = r"data/t10k-labels-idx1-ubyte"
+    model = LeNet5().to(device) # .cuda()
+    test_images_path = r"data/t10k-images.idx3-ubyte"
+    test_labels_path = r"data/t10k-labels.idx1-ubyte"
     test_images = decode_idx3_ubyte(test_images_path)
     test_labels = decode_idx1_ubyte(test_labels_path)
     test_images = test_images.reshape(10000, 1, 28, 28).astype(np.float32) / 255 - 0.5 / 0.5

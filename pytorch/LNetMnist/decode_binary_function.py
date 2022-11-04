@@ -5,6 +5,7 @@
 '''
 import struct#struct模块
 import numpy as np #numpy包
+from matplotlib import pyplot as plt
 
 
 def decode_idx3_ubyte(idx3_ubyte_file):
@@ -50,7 +51,7 @@ def decode_idx3_ubyte(idx3_ubyte_file):
             #plt.imshow(images[i],'gray')
             #不明白是什么意思
 
-            #plt.pause(0.001)
+            # plt.pause(0.001)
             #plt.show()
         #plt.show()
 

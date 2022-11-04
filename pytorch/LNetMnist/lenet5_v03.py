@@ -7,7 +7,7 @@
 import torch
 from torch import nn
 from torch.nn import functional as F
-
+import torch as t
 
 class LeNet5(nn.Module):
     def __init__(self):
