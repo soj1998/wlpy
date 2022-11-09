@@ -15,6 +15,7 @@ def detect(model,image):
     model.load_state_dict(t.load(wt))
     image=t.from_numpy(image)
     pred_labels=model(image.to(device))
+    print(pred_labels)
     predicted=t.max(pred_labels,1)[1].cpu()
     print(type(predicted))
     print(predicted.shape)
@@ -80,19 +81,19 @@ def load_image1(file):
     plt.imshow(img)
     plt.show()
 
-    img = img.resize((28,28),Image.ANTIALIAS)
+    #img = img.resize((28,28),Image.ANTIALIAS)
 
 
-    plt.imshow(img)
-    plt.show()
+    #plt.imshow(img)
+    #plt.show()
     img = np.array(img).reshape(1,1,28,28).astype('float32')
     # 归一化处理
-    img = img / 255-0.5/0.5
+    #img = img / 255-0.5/0.5
     return img
 
 if __name__=="__main__":
     model=LeNet5().to(device)
-    image_path = r"./dectect_images/0.jpg"
-    image=load_image(image_path)
+    image_path = r"./dectect_images/4.jpg"
+    image=load_image1(image_path)
     detect(model=model,image=image)
 
