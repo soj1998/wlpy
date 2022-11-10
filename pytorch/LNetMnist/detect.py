@@ -99,7 +99,7 @@ def get_jiancetu(img1):
 if __name__=="__main__":
     model=LeNet5().to(device)  # .cuda()
     for i in range(1):
-        img = Image.open(r"screenshot.jpg")
+        img = Image.open(r"dectect_images/4.jpg")
         # 每次递增8 递增9次
         for i1 in range(10):
             template = get_template(img, i1)  # 转换代码
