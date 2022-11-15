@@ -11,7 +11,7 @@ import utils
 
 
 def train():
-
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     utils.set_seed()
     # ============================ step 1/5 数据 ============================
 
@@ -40,8 +40,8 @@ def train():
     valid_loader = DataLoader(dataset=valid_data, batch_size=opt.batch_size)
 
     # ============================ step 2/5 模型 ============================
-    net = LeNet(classes=2)
-    net.initialize_weights()
+    net = LeNet(classes=2).to(device)
+    # net.initialize_weights()
 
     # ============================ step 3/5 损失函数 ============================
     criterion = nn.CrossEntropyLoss()  # 选择损失函数
@@ -65,6 +65,8 @@ def train():
 
             # forward
             inputs, labels = data
+            inputs = inputs.to(device)
+            labels = labels.to(device)
             outputs = net(inputs)
 
             # backward
@@ -78,7 +80,7 @@ def train():
             # 统计分类情况
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
-            correct += (predicted == labels).squeeze().sum().numpy()
+            correct += (predicted == labels).to("cpu").squeeze().sum().numpy()
 
             # 打印训练信息
             loss_mean += loss.item()
@@ -101,25 +103,30 @@ def train():
             with torch.no_grad():
                 for j, data in enumerate(valid_loader):
                     inputs, labels = data
+                    inputs = inputs.to(device)
+                    labels = labels.to(device)
                     outputs = net(inputs)
                     loss = criterion(outputs, labels)
 
                     _, predicted = torch.max(outputs.data, 1)
                     total_val += labels.size(0)
-                    correct_val += (predicted == labels).squeeze().sum().numpy()
+                    correct_val += (predicted == labels).to("cpu").squeeze().sum().numpy()
 
                     loss_val += loss.item()
 
                 valid_curve.append(loss_val)
                 print("Valid:\t Epoch[{:0>3}/{:0>3}] Iteration[{:0>3}/{:0>3}] Loss: {:.4f} Acc:{:.2%}".format(
                     epoch, opt.epochs, j + 1, len(valid_loader), loss_val, correct / total))
-    net_state_dict = net.state_dict()
-    torch.save(net_state_dict, opt.path_state_dict)
-    print("save~")
+
+        # 保存模型参数
+        net_state_dict = net.state_dict()
+        torch.save(net_state_dict, opt.path_state_dict)
+        print("save~")
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', type=int, default=10)  # 500200 batches at bs 16, 117263 COCO images = 273 epochs
+    parser.add_argument('--epochs', type=int, default=20)  # 500200 batches at bs 16, 117263 COCO images = 273 epochs
     parser.add_argument('--batch-size', type=int, default=5)  # effective bs = batch_size * accumulate = 16 * 4 = 64
     parser.add_argument('--lr', type=float, default=0.01)
     parser.add_argument('--log_interval', type=int, default=10)

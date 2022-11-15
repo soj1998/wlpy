@@ -1,4 +1,3 @@
-
 import argparse
 import torch
 import torch.nn as nn
@@ -40,7 +39,7 @@ def train():
     valid_loader = DataLoader(dataset=valid_data, batch_size=opt.batch_size)
 
     # ============================ step 2/5 模型 ============================
-    net = LeNet(classes=2)
+    net = LeNet(classes=10)
     net.initialize_weights()
 
     # ============================ step 3/5 损失函数 ============================
@@ -124,8 +123,8 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=0.01)
     parser.add_argument('--log_interval', type=int, default=10)
     parser.add_argument('--val_interval', type=int, default=1)
-    parser.add_argument('--train_dir', type=str, default='./RMB_data/rmb_split/train')
-    parser.add_argument('--valid_dir', type=str, default='./RMB_data/rmb_split/valid')
+    parser.add_argument('--train_dir', type=str, default='./mnistdata/train')
+    parser.add_argument('--valid_dir', type=str, default='./mnistdata/valid')
     parser.add_argument('--path_state_dict', type=str, default='./model_state_dict.pkl')
     opt = parser.parse_args()
     train()
