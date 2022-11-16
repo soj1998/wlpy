@@ -19,7 +19,7 @@ def train():
 
     train_transform = transforms.Compose([
         transforms.Resize((32, 32)),
-        transforms.RandomCrop(32, padding=4),
+        transforms.RandomCrop(32, padding=2),
         transforms.ToTensor(),
         transforms.Normalize(norm_mean, norm_std),
     ])
@@ -47,7 +47,7 @@ def train():
 
     # ============================ step 4/5 优化器 ============================
     optimizer = optim.SGD(net.parameters(), lr=opt.lr, momentum=0.9)  # 选择优化器
-    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)  # 设置学习率下降策略
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)  # 设置学习率下降策略
 
     # ============================ step 5/5 训练 ============================
     train_curve = list()
@@ -118,7 +118,7 @@ def train():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', type=int, default=10)  # 500200 batches at bs 16, 117263 COCO images = 273 epochs
+    parser.add_argument('--epochs', type=int, default=20)  # 500200 batches at bs 16, 117263 COCO images = 273 epochs
     parser.add_argument('--batch-size', type=int, default=5)  # effective bs = batch_size * accumulate = 16 * 4 = 64
     parser.add_argument('--lr', type=float, default=0.01)
     parser.add_argument('--log_interval', type=int, default=10)
