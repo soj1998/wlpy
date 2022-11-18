@@ -37,7 +37,7 @@ def detect():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--test_dir', type=str, default='./mnistdata/valid')
+    parser.add_argument('--test_dir', type=str, default='./mnistdata/test')
     parser.add_argument('--path_state_dict', type=str, default='./model_state_dict.pkl')
     opt = parser.parse_args()
     detect()

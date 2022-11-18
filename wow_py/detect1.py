@@ -54,9 +54,15 @@ def get_template(img1, i12):
     return template1
 
 
+def cv2write(name, temp, bz='zhiding'):
+    if bz != 'zhiding':
+        cv2.imwrite(name, temp)
+    pass
+
+
 def get_jiance(img1, quyu, path_state_dict):
-    y1 = 446
-    y2 = 456
+    y1 = 135
+    y2 = 145
     rs = list()
     if quyu == 'ditu': # 140 446 149 456
         x1 = 140
@@ -66,31 +72,61 @@ def get_jiance(img1, quyu, path_state_dict):
         temp = detect(temp, path_state_dict)
         rs.append(temp)
         return rs
-    if quyu == 'xzb': # 169 446 205 456 间隔9
-        x1 = 169
+    if quyu == 'xzb':
+        x1 = 101
         for i1 in range(4):
-            x1 = 169 + i1 * 9
+            x1 = 101 + i1 * 9
             cut = (x1, y1, x1 + 9, y2)
             temp = img1.crop(cut)
             temp = cv2.cvtColor(np.asarray(temp), cv2.COLOR_RGB2BGR)
+            i11 = 'x' + str(i1) + '.jpg'
+            cv2write(i11, temp, 'aa')
             temp = detect(temp, path_state_dict)
             rs.append(temp)
         return rs
     if quyu == 'yzb': # 226 446 261 456
-        x1 = 226
+        x1 = 157
         for i1 in range(4):
-            x1 = 226 + i1 * 9
+            x1 = 157 + i1 * 9
             cut = (x1, y1, x1 + 8, y2)
             temp = img1.crop(cut)
             temp = cv2.cvtColor(np.asarray(temp), cv2.COLOR_RGB2BGR)
+            i11 = 'y' + str(i1) + '.jpg'
+            cv2write(i11, temp)
+            temp = detect(temp, path_state_dict)
+            rs.append(temp)
+        return rs
+    if quyu == 'hp':
+        x1 = 224
+        for i1 in range(2):
+            x1 = 224 + i1 * 9
+            cut = (x1, y1, x1 + 8, y2)
+            temp = img1.crop(cut)
+            temp = cv2.cvtColor(np.asarray(temp), cv2.COLOR_RGB2BGR)
+            i11 = 'hp' + str(i1) + '.jpg'
+            cv2write(i11, temp)
+            temp = detect(temp, path_state_dict)
+            rs.append(temp)
+        return rs
+    if quyu == 'mana':
+        x1 = 261
+        for i1 in range(2):
+            x1 = 261 + i1 * 9
+            cut = (x1, y1, x1 + 8, y2)
+            temp = img1.crop(cut)
+            temp = cv2.cvtColor(np.asarray(temp), cv2.COLOR_RGB2BGR)
+            i11 = 'mana' + str(i1) + '.jpg'
+            cv2write(i11, temp)
             temp = detect(temp, path_state_dict)
             rs.append(temp)
         return rs
     return rs
 
 
-def getxyint(xzblist):
+def getxyint(xzblist, weishu=4):
     weishu1 = 1000
+    if weishu == 2:
+        weishu1 = 10
     xzbr = 0
     for xzb in xzblist:
         if xzb == -1:
@@ -101,7 +137,6 @@ def getxyint(xzblist):
 
 
 if __name__ == '__main__':
-    test_dir = './1.jpg'
     path_state_dict = './model_state_dict.pkl'
     daimg = Image.open("screenshot.jpg")
     img = get_template(daimg, 3)
@@ -110,4 +145,8 @@ if __name__ == '__main__':
     xzbr = getxyint(xzblist)
     yzblist = get_jiance(daimg, 'yzb', path_state_dict)
     yzbr = getxyint(yzblist)
-    print(int(xzbr),int(yzbr))
+    hplist = get_jiance(daimg, 'hp', path_state_dict)
+    hp = getxyint(hplist, 2)
+    manalist = get_jiance(daimg, 'mana', path_state_dict)
+    mana = getxyint(manalist, 2)
+    print(int(xzbr),int(yzbr),int(hp),int(mana))
