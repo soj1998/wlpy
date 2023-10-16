@@ -5,7 +5,7 @@ import cv2
 from PIL import Image, ImageQt
 
 
-hwnd = win32gui.FindWindow(None, '魔兽世界')
+hwnd = win32gui.FindWindow(None, '银行业抵债资产风险分析')
 app = QApplication(sys.argv)
 screen = QApplication.primaryScreen()
 img = screen.grabWindow(hwnd).toImage()
