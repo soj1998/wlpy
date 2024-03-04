@@ -1,6 +1,6 @@
 # 导入工具包 学习文章 https://zhuanlan.zhihu.com/p/88745033 OpenCv的DNN模块学习记录
 # 百度搜索 opencv cv2.dnn_readNetFromCaffe lenet_iter_10000.caffemodel
-import numpy as np
+import numpy1 as np
 import cv2
 
 # 标签文件处理

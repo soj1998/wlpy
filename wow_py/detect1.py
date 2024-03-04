@@ -55,7 +55,7 @@ def get_template(img1, i12):
 
 
 def cv2write(name, temp, bz='zhiding'):
-    if bz != 'zhiding':
+    if bz == 'zhiding':
         cv2.imwrite(name, temp)
     pass
 
@@ -80,7 +80,7 @@ def get_jiance(img1, quyu, path_state_dict):
             temp = img1.crop(cut)
             temp = cv2.cvtColor(np.asarray(temp), cv2.COLOR_RGB2BGR)
             i11 = 'x' + str(i1) + '.jpg'
-            cv2write(i11, temp, 'aa')
+            cv2write(i11, temp)
             temp = detect(temp, path_state_dict)
             rs.append(temp)
         return rs

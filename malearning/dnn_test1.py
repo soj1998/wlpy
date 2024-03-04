@@ -1,5 +1,5 @@
 import cv2 as cv
-import numpy as np
+import numpy1 as np
 
 bin_model = "bvlc_googlenet.caffemodel"
 protxt = "bvlc_googlenet.prototxt"

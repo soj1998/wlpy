@@ -1,6 +1,6 @@
 import cv2
 import readimage.getWindow as getw
-import numpy as np
+import numpy1 as np
 
 classname = []
 classfile = 'coco.names'

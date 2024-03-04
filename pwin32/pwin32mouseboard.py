@@ -211,6 +211,10 @@ class Lan(Enum):
     ZH = 0x8040804
 
 
+def vkcode():
+    return VK_CODE
+
+
 def change_lan(lan :Lan):
     """
     修改当前激活窗口输入法
@@ -277,6 +281,11 @@ def get_handle(title, exe_path=""):
                 break
             print("等待软件启动----------%d" % i)
     return handle
+
+
+def send_input_hax(hwnd, msg):
+    win32api.SendMessage(hwnd, win32con.WM_KEYDOWN, msg, 0)
+    win32api.SendMessage(hwnd, win32con.WM_KEYUP, msg, 0)
 
 
 def click(click_type, x_position=None, y_position=None, double_click=False, sleep=0.):
